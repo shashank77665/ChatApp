@@ -142,12 +142,11 @@ class _SignUpState extends State<SignUp> {
                                       emailcontroller.text,
                                       passwordcontroller.text)
                                   .then((user) {
-                                print('entering tro if block');
                                 if (user != null) {
                                   setState(() {
                                     isLoading = false;
                                   });
-                                  print('Login Sucessfull');
+                                  print('Signup Sucessfull');
                                 } else {
                                   print('Login Failed');
                                 }
