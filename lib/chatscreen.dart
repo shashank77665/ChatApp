@@ -1,18 +1,12 @@
-import 'package:chatapp/userdata.dart';
 import 'package:flutter/material.dart';
 
-class Chatscreen extends StatefulWidget {
-  final User user;
-  const Chatscreen({super.key, required this.user});
+class Chatscreen extends StatelessWidget {
+  final Map<String, dynamic> userMap;
+  final chatRoomId;
+  const Chatscreen({required this.chatRoomId, required this.userMap});
 
-  @override
-  State<Chatscreen> createState() => _ChatscreenState();
-}
-
-class _ChatscreenState extends State<Chatscreen> {
   @override
   Widget build(BuildContext context) {
-    final user = widget.user;
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -24,28 +18,8 @@ class _ChatscreenState extends State<Chatscreen> {
               },
               child: Icon(Icons.arrow_back),
             ),
-            title: Row(
-              children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(user.profileNetworkUrl),
-                  radius: 20,
-                ),
-                SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      user.userName,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'Information',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            title: Text(userMap['name']),
+            subtitle: Text(userMap['email']),
             trailing: PopupMenuButton(
               itemBuilder: (context) => [
                 PopupMenuItem(child: Text('Item 1')),

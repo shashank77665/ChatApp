@@ -1,4 +1,5 @@
 import 'package:chatapp/forgotpass.dart';
+import 'package:chatapp/homepage.dart';
 import 'package:chatapp/login.dart';
 import 'package:chatapp/methods.dart';
 import 'package:flutter/material.dart';
@@ -147,8 +148,16 @@ class _SignUpState extends State<SignUp> {
                                     isLoading = false;
                                   });
                                   print('Signup Sucessfull');
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => HomePage(),
+                                      ));
                                 } else {
                                   print('Login Failed');
+                                  setState(() {
+                                    isLoading = false;
+                                  });
                                 }
                               });
                             } else {
